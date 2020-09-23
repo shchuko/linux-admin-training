@@ -10,11 +10,5 @@ fi
 
 SEARCH_ROOT="$1"
 
-for SYMLINK in $(find "$SEARCH_ROOT" -type l); do
-	SYMLINK_TARGET=$(readlink "$SYMLINK")
-	if [[ ! -f "$SYMLINK_TARGET" ]]; then
-		echo "Target file $SYMLINK_TARGET not exists"
-	fi
-done
-
+find "$SEARCH_ROOT" -xtype l
 
