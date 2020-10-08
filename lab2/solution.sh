@@ -191,3 +191,22 @@ mount "$LV_DEV" "$LV_MOUNTPOINT"
 
 df -h
 
+# -- 15 --
+printTask 15 "CIFS"
+exit 0
+# requires cifs-utils
+
+NETADDR="//127.0.0.1/share"
+SHARE_MOUNTPOUIN="/mnt/share"
+
+mkdir -p "$SHARE_MOUNTPOINT"
+mount.cifs "$NETADDR" "$SHARE_MOUNTPOINT" -o user=someUser password=somePassword
+
+# /root/.smbclient
+#  username=username
+#  password=password
+#  domain=domain
+
+# /etc/fstab
+# //127.0.0.1/share /mnt/share cifs user,rw,credentials=/root/.smbclient 0 0
+
