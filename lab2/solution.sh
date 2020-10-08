@@ -183,7 +183,7 @@ LV_MOUNTPOINT="/mnt/supernewdisk"
 
 pvcreate "$DEV_2" "$DEV_3"
 vgcreate "$VG_NAME" "$DEV_2" "$DEV_3"
-lvcreate -L190 -n "$LV_NAME" "$VG_NAME"
+lvcreate -l 100%FREE -n "$LV_NAME" "$VG_NAME"
 
 mkfs.ext4 "$LV_DEV"
 mkdir -p "$LV_MOUNTPOINT"
