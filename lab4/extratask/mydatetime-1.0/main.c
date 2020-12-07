@@ -45,9 +45,7 @@ static void getTimeStr(char buf[]) {
  * Print to stdout current local date and time every 1s
  */
 static int dateRunner() {
-	const int 	buf_siz;
 	char 		buffer[26];
-	
 
 	while (keepExec) {
 		getTimeStr(buffer);
@@ -64,3 +62,4 @@ int main(int argc, char** argv) {
 	signal(SIGINT, stopExec);
 	return dateRunner();	
 }
+

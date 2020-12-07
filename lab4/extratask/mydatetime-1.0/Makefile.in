@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-c Wall
+CFLAGS=-c -Wall
 TARGET=mydatetime
 
 prefix = @prefix@
@@ -14,7 +14,7 @@ $(TARGET): main.o
 	$(CC) main.o -o $(TARGET)
 
 main.o: main.c
-	$(CC) main.c -c
+	$(CC) $(CFLAGS) main.c 
 
 install:
 	mkdir -p $(DESTDIR)/$(bindir)
