@@ -1,0 +1,28 @@
+CC=gcc
+CFLAGS=-c Wall
+TARGET=mydatetime
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+
+all: $(TARGET)
+
+$(TARGET): main.o
+	$(CC) main.o -o $(TARGET)
+
+main.o: main.c
+	$(CC) main.c -c
+
+install:
+	mkdir -p $(DESTDIR)/$(bindir)
+	install ./$(TARGET) $(DESTDIR)/$(bindir)/$(TARGET)
+
+uninstall:
+	rm -rf $(DESTDIR)/$(bindir)/$(TARGET)
+clean:
+	rm -rf *.o $(TARGET)
+
+.PHONY: all clean install uninstall
